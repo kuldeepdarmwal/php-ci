@@ -1,0 +1,22 @@
+ <div  id="body"> 
+ <div class="padding" align="center" >
+	<form name="loginform"  id="register" action="LoginCheck.php" class="form-signin" method="post"  >
+        <h2 class="form-signin-heading">Please Login </h2>
+        <label for="inputEmail" class="sr-only">user name</label>
+        <input type="text"  maxlength="30" name="email" required="required" id="inputEmail" class="form-control" placeholder="user name" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" maxlength="20" min="8" name="pass" required="required" id="inputPassword" class="form-control" placeholder="Password" required>
+       
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="ValidateEmail(document.loginform.email)">Log in</button>
+		 <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+		   <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+        </div>
+
+	</form>	
+	<div id="errror_message"></div>
+    <a href="SignupPageIncluded.php" class="text-center new-account">Create an account </a>   
+</div>   
+</div>

@@ -1,0 +1,44 @@
+#imagesect{
+line-height:30px;
+    
+    height:300px;
+    width:200px;
+    float:left;
+    padding:5px;
+	 border-style: ridge;
+    border-width: 2px;
+}
+#datashow{
+line-height:30px;
+    
+    height:300px;
+    width:200px;
+    float:left;
+    padding:5px;
+	 border-style: groove;
+    border-width: 2px;
+}
+#one{
+line-height:30px;
+    
+    height:30px;
+    
+    float:left;
+    padding:5px;
+}
+#two{
+line-height:30px;
+    
+    height:30px;
+    
+    float:left;
+    padding:5px;
+}
+#three{
+line-height:30px;
+    
+    height:30px;
+    
+    float:left;
+    padding:5px;
+}

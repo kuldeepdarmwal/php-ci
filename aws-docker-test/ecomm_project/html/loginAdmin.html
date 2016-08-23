@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- js  script for admin login validations -->
+<script type='text/javascript' src="../js/adminLoginValidate.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../css/Signin.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div class="container">
+	<form id="register" action="../Success.php" class="form-signin" method="post">
+    <h2 class="form-signin-heading">Please Login </h2>
+    <label for="inputEmail" class="sr-only">Admin name</label>
+    <input type="text"  maxlength="30" name="name" required="required" id="inputEmail" class="form-control" placeholder="Admin name" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" maxlength="20" min="8" name="password" required="required" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+		<label>
+			<input type="checkbox" value="remember-me"> Remember me
+		</label>
+    </div>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

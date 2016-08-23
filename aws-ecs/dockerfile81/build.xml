@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ALM Task Manager" default="build">
+<property name="toolsdir" value="bin/" />
+
+ <target name="build" depends="prepare,phploc,pdepend,phpmd,phpmd-ci,phpcs,phpcs-ci,phpunit,phpdox"/>
+
+ <target name="clean" description="Cleanup build artifacts">
+  <delete dir="${basedir}/build/api"/>
+  <delete dir="${basedir}/build/coverage"/>
+  <delete dir="${basedir}/build/logs"/>
+  <delete dir="${basedir}/build/pdepend"/>
+  <delete dir="${basedir}/build/phpdox"/>
+ </target>
+
+ <target name="prepare" depends="clean" description="Prepare for build">
+  <mkdir dir="${basedir}/build/api"/>
+  <mkdir dir="${basedir}/build/coverage"/>
+  <mkdir dir="${basedir}/build/logs"/>
+  <mkdir dir="${basedir}/build/pdepend"/>
+ </target>
+
+<target name="phploc" description="Measure project size using PHPLOC">
+  <exec executable="${toolsdir}phploc">
+    <arg value="--count-tests" />
+    <arg value="--log-csv" />
+    <arg path="${basedir}/build/logs/phploc.csv" />
+    <arg value="--log-xml" />
+    <arg path="${basedir}/build/logs/phploc.xml" />
+    <arg path="${basedir}/app" />
+    <arg path="${basedir}/app/tests" />
+  </exec>
+</target>
+
+<target name="pdepend" description="Calculate software metrics using PHP_Depend">
+  <exec executable="${toolsdir}pdepend">
+     <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
+     <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+     <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+     <arg path="${basedir}/app" />
+ </exec>
+</target>
+<target name="phpcpd" description="Find duplicate code using PHPCPD">
+ <exec executable="${toolsdir}phpcpd">
+  <arg value="--log-pmd" /> 
+  <arg path="${basedir}/build/logs/pmd-cpd.xml" /> 
+  <arg path="${basedir}/app" /> 
+  </exec>
+  </target>
+
+
+<target name="phpmd" description="Perform project mess detection using PHPMD and print result in text format">
+  <exec executable="${toolsdir}phpmd">
+     <arg path="${basedir}/app" />
+     <arg value="text" />
+     <arg path="${basedir}/build/phpmd.xml" />
+  </exec>
+</target>
+
+ <target name="phpmd-ci" description="Perform project mess detection using PHPMD and log result in XML format">
+  <exec executable="${toolsdir}phpmd">
+   <arg path="${basedir}/app" />
+   <arg value="xml" />
+   <arg path="${basedir}/build/phpmd.xml" />
+   <arg value="--reportfile" />
+   <arg path="${basedir}/build/logs/pmd.xml" />
+  </exec>
+ </target>
+
+<target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer and print result in text format">
+  <exec executable="${toolsdir}phpcs">
+   <arg value="--standard=PSR1" />
+   <arg value="--extensions=php" />
+   <arg value="--ignore=vendor/autoload.php,vendor" />
+   <arg path="${basedir}/app" />
+   <arg path="${basedir}/app/tests" />
+  </exec>
+ </target>
+
+ <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer and log result in XML format">
+   <exec executable="${toolsdir}phpcs" output="/dev/null">
+      <arg value="--report=checkstyle" />
+      <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+      <arg value="--standard=PSR1" />
+      <arg value="--extensions=php" />
+      <arg value="--ignore=vendor/autoload.php,vendor/" />
+      <arg path="${basedir}/app" />
+  </exec>
+</target>
+
+<target name="phpdox" description="Generate project documentation using phpDox">
+  <exec executable="${toolsdir}phpdox">
+   <arg value="--file" />
+   <arg value="${basedir}/build/phpdox.xml" />
+  </exec>
+</target>
+
+
+<target name="phpunit" description="Run unit tests with PHPUnit">
+  <exec executable="${toolsdir}phpunit" failonerror="true">
+     <arg value="--configuration"/>
+     <arg path="${basedir}/phpunit.xml"/>
+  </exec>
+</target>
+
+</project>
+

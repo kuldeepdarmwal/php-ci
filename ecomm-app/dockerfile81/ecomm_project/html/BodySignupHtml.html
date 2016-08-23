@@ -1,0 +1,29 @@
+ <div  id="body"> 
+ <div class="padding" align="center" >
+ 
+
+	<form name="loginform"  id="register" action="bodySignup.php" class="form-signin" method="post" onsubmit="return myFunction()" >
+        <h2 class="form-signin-heading">Please SignUp </h2>
+		
+        <label for="user_emailid" class="sr-only">Email</label>
+        <input type="email"  maxlength="30" name="user_emailid" required="required" id="user_emailid" class="form-control" placeholder="Email id" required autofocus>
+		</br>
+		 <label for="user_password" class="sr-only">Password</label>
+        <input type="password" maxlength="20" min="8" name="user_password" required="required" id="user_password" class="form-control" placeholder="Password" required>
+		
+        <label for="user_repassword" class="sr-only">RetypePassword</label>
+        <input type="password" maxlength="20" min="8" name="user_repassword" required="required" id="user_repassword" class="form-control" placeholder="Retype Password" required>
+       
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Add User" onclick="ValidateEmail(document.loginform.user_emailid)">Add User</button>
+		 <button class="btn btn-lg btn-primary btn-block"  type="button" value="cancel" >Cancel</button>
+
+	</form>	
+	<div id="errror_message"></div>
+	
+		
+	<div id="errror_message2">
+	</div>
+
+   
+</div>   
+</div>
